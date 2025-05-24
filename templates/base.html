@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NanoVersity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1><a href="/">NanoVersity</a></h1>
+    </header>
+
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="{{ url_for('home') }}"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="{{ url_for('search') }}"><i class="fas fa-search"></i><span>Search Courses</span></a>
+        <a href="{{ url_for('cart') }}"><i class="fas fa-shopping-cart"></i><span>Cart</span></a>
+
+        {% if session.get('user_id') %}
+            <a href="{{ url_for('dashboard') }}"><i class="fas fa-user"></i><span>Dashboard</span></a>
+
+            {% if logged_in_user == 'admin' %}
+                <a href="{{ url_for('add_course') }}"><i class="fas fa-plus-circle"></i><span>Add Course</span></a>
+            {% endif %}
+
+            <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+        {% else %}
+            <a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i><span>Login</span></a>
+        {% endif %}
+    </nav>
+
+    <!-- Popup Modal -->
+    <div id="popup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="popup-title"></h2>
+            <p id="popup-description"></p>
+        </div>
+    </div>
+<!-- Chatbot UI -->
+<div id="chatbot-container">
+    <div id="chatbot-header">Need Help? Chat with us!</div>
+    <div id="chatbot-messages"></div>
+    <input type="text" id="chatbot-input" placeholder="Ask a question..." />
+</div>
+<button id="chatbot-toggle">💬</button>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

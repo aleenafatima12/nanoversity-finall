@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Payment Successful!</h2>
+<p style="text-align:center; margin-top:20px;">Thank you for purchasing the course(s)! You can now access your enrolled courses from the Dashboard.</p>
+<p style="text-align:center; margin-top:20px;"><a href="{{ url_for('dashboard') }}" class="btn">Go to Dashboard</a></p>
+{% endblock %}

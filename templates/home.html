@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="about-us">
+    <h1>Welcome.</h1>
+    <h3>Start Learning With Us.</h3>
+</section>
+<section class="banner">
+    <img src="static/images/Top Banner.png" alt="Top Banner" class="banner-img">
+</section>
+<section class="about-us">
+    <h2>About Us</h2>
+    <p>Welcome to NanoVersity — your trusted platform to learn new skills and upgrade your future! 
+    We offer certified online courses across trending fields like Data Science, Cloud Computing, Programming, Business Analytics, and many more. 
+    Our mission is to make quality education affordable and accessible for everyone.</p>
+</section>
+
+<section class="recommended">
+    <h2>Recommended for You</h2>
+
+    <div class="course-grid">
+        {% for course in courses %}
+        <div class="course-card">
+            <img src="{{ course[3] }}" alt="{{ course[1] }}">
+            <h3 onclick="showDescription({{ course[0] }})" class="clickable">{{ course[1] }}</h3>
+            <p class="price">${{ course[4] }}</p>
+            <a href="{{ url_for('add_to_cart', course_id=course[0]) }}" class="btn">Add to Cart</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="gallery">
+    <h2>Gallery</h2>
+
+    <div class="gallery-grid">
+        <img src="https://www.21kschool.com/in/wp-content/uploads/sites/4/2024/09/Learning-Methods.png" alt="Business Communication Skills Part 5">
+        <img src="https://static.wixstatic.com/media/65246d_c7bd3ba476fb4191af59a11494ad027f~mv2.jpg/v1/fill/w_820,h_460,al_c,q_85/65246d_c7bd3ba476fb4191af59a11494ad027f~mv2.jpg" alt="Business Communication Skills Part 5">
+        <img src="https://www.euroschoolindia.com/blogs/wp-content/uploads/2023/08/strategies-to-improve-student-learning.jpg" alt="Business Communication Skills Part 5">
+        <img src="https://mintbook.com/blog/wp-content/uploads/2019/08/5-Reasons-to-Invest-In-E-Learning-Tools-for-Your-Children.png" alt="Business Communication Skills Part 5">
+        <img src="https://cdn.fs.teachablecdn.com/ju5fq6mRwOVwoMkb4B0g" alt="Python Masterclass Part 5">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP3Bt_xDlpi1YCUeKijBq7_a0erGw2DsYd9uAvkDCZ9EfwW6S4fA1AFAKjag51V7xVHuA&usqp=CAU" alt="Data Science Bootcamp Part 5">
+        <img src="https://jaro-website.s3.ap-south-1.amazonaws.com/2024/04/0-cl7fc6pt1MHjIF4K.png" alt="Web Development Full Stack Part 5">
+        <img src="https://miro.medium.com/v2/resize:fit:2000/1*vLNbKAWbGtFLC7tUBYb50A.png" alt="Cloud Computing with AWS Part 5">
+        <img src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/MEeDmR7RRC12EzjJtTQQ" alt="Excel Data Analysis Part 5">
+        <img src="https://www.pankajkumarseo.com/wp-content/uploads/2022/06/Android-App-Development-Course.png" alt="Android App Development Part 5">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoZqHUhXsp6dq1Dhj5CfuScq8dohDEZgDWHQ&s" alt="Cybersecurity Essentials Part 5">
+        <img src="https://microsoft.github.io/AI-For-Beginners/lessons/sketchnotes/ai-overview.png" alt="Artificial Intelligence Basics Part 5">
+        <img src="https://sophiacollege.ac.in/wp-content/uploads/2023/04/B-Com-Accounting-and-Finance-900x550.png" alt="Financial Accounting Fundamentals Part 5">
+        <img src="https://zeroinfy.in/cdn/shop/products/BC.jpg?v=1644236493" alt="Business Communication Skills Part 5">
+    </div>
+</section>
+
+{% endblock %}

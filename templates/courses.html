@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>All Courses</h2>
+
+<div class="course-grid">
+    {% for course in courses %}
+    <div class="course-card">
+        {% if course[3].startswith('http') %}
+            <img src="{{ course[3] }}" alt="{{ course[1] }}">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/' ~ course[3]) }}" alt="{{ course[1] }}">
+        {% endif %}
+        <h3 onclick="showDescription({{ course[0] }})" class="clickable">{{ course[1] }}</h3>
+        <p class="price">${{ course[4] }}</p>
+        <a href="{{ url_for('enroll', course_id=course[0]) }}" class="btn">Enroll Now</a><br>
+        <a href="{{ url_for('add_to_cart', course_id=course[0]) }}" class="btn">Add to Cart</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

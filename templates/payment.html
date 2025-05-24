@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Payment</h2>
+<form method="POST" class="form-box">
+    <label for="payment_method">Select Payment Method:</label><br><br>
+    <select name="payment_method" required>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+        <option value="UPI">UPI</option>
+        <option value="Net Banking">Net Banking</option>
+    </select><br><br>
+
+    <label>Card/UPI/Account Number:</label><br>
+    <input type="text" required><br><br>
+
+    <input type="submit" value="Confirm Payment" class="btn">
+</form>
+{% endblock %}

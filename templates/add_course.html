@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="max-width: 600px; margin: 40px auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <h2 style="text-align:center; color: #6c63ff;">Add a New Course</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div style="color: green; margin-bottom: 15px;">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="title"><strong>Course Title:</strong></label><br>
+        <input type="text" name="title" id="title" required style="width:100%; padding:10px; margin-bottom:15px;"><br>
+
+        <label for="description"><strong>Description:</strong></label><br>
+        <textarea name="description" id="description" rows="4" required style="width:100%; padding:10px; margin-bottom:15px;"></textarea><br>
+
+        <label for="price"><strong>Price (USD):</strong></label><br>
+        <input type="number" name="price" id="price" step="0.01" required style="width:100%; padding:10px; margin-bottom:15px;"><br>
+
+        <label for="image"><strong>Upload Image:</strong></label><br>
+        <input type="file" name="image" id="image" accept="image/*" style="margin-bottom:20px;"><br>
+
+        <button type="submit" style="background-color: #6c63ff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Add Course</button>
+    </form>
+</div>
+{% endblock %}

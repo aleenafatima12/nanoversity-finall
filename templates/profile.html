@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Profile</h2>
+
+<form method="POST" class="form-box">
+    <h3>{{ user[0] }}</h3>
+    <textarea name="bio" placeholder="Write your bio...">{{ user[1] }}</textarea><br>
+    <input type="submit" value="Update Bio" class="btn">
+</form>
+
+{% endblock %}
